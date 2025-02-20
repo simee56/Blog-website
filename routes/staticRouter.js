@@ -1,4 +1,5 @@
-const router = require('../routes/user');
+const express = require('express');
+const router = express.Router();
 
 router.get("/signin", (req, res) => {
     return res.render("Signin")
@@ -7,3 +8,5 @@ router.get("/signin", (req, res) => {
 router.get("/signup", (req, res) => {
     return res.render("Signup")
 });
+
+module.exports = router;
