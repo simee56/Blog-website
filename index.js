@@ -17,19 +17,18 @@ connectMongoDB("mongodb://127.0.0.1:27017/Blog").then(() =>
     console.log("MongoDb connected")
 );
 
-
-//ROUTES
-const staticRoute = require('./routes/staticRouter');
-const userRoute = require('./routes/user');
-
-
 // MIDDLEWARE
 app.use(express.urlencoded({ extended: false }));    //this is for form data
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
 
-app.use('/', staticRoute);                 // static router = frontend pages
+
+//ROUTES
+const userRoute = require('./routes/user');
+const blogRoute = require('./routes/blog');
+
 app.use('/user', userRoute);
+app.use('/blog', blogRoute);
 
 
 app.get('/', (req, res) => {
