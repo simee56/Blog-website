@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const connectMongoDB = require('./connection');
 const cookieParser = require('cookie-parser');
+const {checkForAuthenticationCookie } = require('./middleware/authentication');
 
 const app = express();
 const PORT = 3000;
@@ -20,13 +21,12 @@ connectMongoDB("mongodb://127.0.0.1:27017/Blog").then(() =>
 //ROUTES
 const staticRoute = require('./routes/staticRouter');
 const userRoute = require('./routes/user');
-const checkForAuthenticationCookie = require('./middleware/authentication');
 
 
 // MIDDLEWARE
 app.use(express.urlencoded({ extended: false }));    //this is for form data
-app.use(checkForAuthenticationCookie("token"))
 app.use(cookieParser());
+app.use(checkForAuthenticationCookie("token"));
 
 app.use('/', staticRoute);                 // static router = frontend pages
 app.use('/user', userRoute);
