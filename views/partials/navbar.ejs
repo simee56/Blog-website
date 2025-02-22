@@ -12,7 +12,7 @@
                 </li>
                 <% if (locals.user) { %>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Add Blog</a>
+                        <a class="nav-link" href="/blog/addnewblog">Add Blog</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -20,7 +20,7 @@
                             Simee Pandey
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                            <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -28,10 +28,10 @@
                     </li>
                     <% } else {%>
                         <li class="nav-item">
-                            <a class="nav-link" href="/signup">Create Account </a>
+                            <a class="nav-link" href="/user/signup">Create Account </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/signin">Signin </a>
+                            <a class="nav-link" href="/user/signin">Signin </a>
                         </li>
                         <% } %>
             </ul>
