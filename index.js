@@ -4,6 +4,7 @@ const connectMongoDB = require('./connection');
 const cookieParser = require('cookie-parser');
 const {checkForAuthenticationCookie } = require('./middleware/authentication');
 
+const Blog = require('./models/blog');
 const app = express();
 const PORT = 3000;
 
@@ -31,12 +32,14 @@ app.use('/user', userRoute);
 app.use('/blog', blogRoute);
 
 
-app.get('/', (req, res) => {
+app.get('/', async(req, res) => {
+    const allBlogs = await Blog.find({})
     res.render("home", {
         user :req.user,
+        blogs : allBlogs,
     });
-})
+});
 
 app.listen(PORT, () => {
     console.log(`SERVER HAS STARTED AT THE PORT ${PORT}`);
-})
+});
