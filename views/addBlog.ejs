@@ -11,7 +11,7 @@
     <%- include('./partials/navbar') %>
 
         <div class="container mt-3">
-            <form action="/blog" method="post">
+            <form action="/blog" method="post" enctype="multipart/form-data">
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
@@ -19,13 +19,13 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="content">Content</label>
-                    <textarea class="form-control" id="content" name="content"></textarea>
+                    <label for="bodyContent">Content</label>
+                    <textarea class="form-control" id="bodyContent" name="bodyContent"></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="coverImage" class="form-label">Cover Image</label>
-                    <input type="file" class="form-control" id="file" name="file" aria-describedby="file">
+                    <input type="file" class="form-control" id="coverImage" name="coverImage" aria-describedby="file">
                 </div>
 
                 <div class="mb-3">
