@@ -35,5 +35,6 @@ router.post('/', upload.single("coverImage"), async (req, res) => {
         });
 
         return res.redirect(`/blog/${blog._id}`);
+
     })
 module.exports = router;
