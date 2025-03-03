@@ -22,6 +22,7 @@ connectMongoDB("mongodb://127.0.0.1:27017/Blog").then(() =>
 app.use(express.urlencoded({ extended: false }));    //this is for form data
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
+app.use(express.static(path.resolve('./public')));
 
 
 //ROUTES
