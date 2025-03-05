@@ -8,7 +8,7 @@ const Blog = require('../models/blog');
 const { handleBlogRoute,handleBlogById } = require('../controllers/blog');
 
 router.get('/addnewblog', handleBlogRoute);
-router.get(':/id', handleBlogById);
+router.get('/:id', handleBlogById);
 
 
 const storage = multer.diskStorage({
