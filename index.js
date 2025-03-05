@@ -18,11 +18,12 @@ connectMongoDB("mongodb://127.0.0.1:27017/Blog").then(() =>
     console.log("MongoDb connected")
 );
 
+
 // MIDDLEWARESS
 app.use(express.urlencoded({ extended: false }));    //this is for form data
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
-app.use(express.static(path.resolve('./public')));
+app.use(express.static(path.resolve("./public")));
 
 
 //ROUTES
@@ -32,7 +33,8 @@ const blogRoute = require('./routes/blog');
 app.use('/user', userRoute);
 app.use('/blog', blogRoute);
 
-//REDIRECT TO HOME PAGE
+
+//RENDERING  HOME PAGE
 app.get('/', async(req, res) => {
     const allBlogs = await Blog.find({})
     res.render("home", {
