@@ -1,10 +1,20 @@
-async function handleBlogRoute(req,res) {
+const Blog = require("../models/blog");
+
+async function handleBlogRoute(req, res) {
     res.render('addblog', {
-        user :req.user
+        user: req.user
     });
 }
 
+async function handleBlogById(req, res) {
+    const blog = await Blog.findById(req.params.id);
+    return res.render("blog", {
+        user: req.user,
+        blog: blog,
+    })
+};
 
-module.exports =  {
-    handleBlogRoute
+module.exports = {
+    handleBlogRoute,
+    handleBlogById
 };
