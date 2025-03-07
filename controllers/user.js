@@ -15,7 +15,6 @@ async function handleUserSignIn(req, res) {
     try {
         const token = await User.matchPasswordAndCreateToken(email, password);
 
-        console.log("token", token);
         return res.cookie("token", token).redirect('/');
     } 
     catch (error) {
