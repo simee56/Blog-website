@@ -7,7 +7,8 @@ async function handleBlogRoute(req, res) {
 }
 
 async function handleBlogById(req, res) {
-    const blog = await Blog.findById(req.params.id);
+    const blog = await Blog.findById(req.params.id).populate("createdBy");
+    console.log("blog", blog);
     return res.render("blog", {
         user: req.user,
         blog: blog,
