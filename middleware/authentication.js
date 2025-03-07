@@ -1,6 +1,6 @@
 const { validateToken } = require('../services/authentication');
 
-//GENERIC MIDDLEWARE - verify the token at every request.
+//GENERIC MIDDLEWARE - verify the token at each request.
 
 function checkForAuthenticationCookie(cookieName) {
     return (req, res, next) => {
