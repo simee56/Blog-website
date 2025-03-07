@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const { schema } = require("./blog");
 
 const commentSchema = new Schema({
     content: {
