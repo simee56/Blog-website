@@ -9,6 +9,7 @@
 
 <body>
     <%- include('./partials/navbar') %>
+
         <div clas="container mt-4">
             <h1>
                 <%= blog.title %>
@@ -20,23 +21,32 @@
         </div>
 
         <div clas="container mt-4">
-            <img src="<%= blog.createdBy.coverImage %>" width="50px" />
-            <%= blog.bodyContent.fullName %>
+            <img src="<%= blog.createdBy.profilePicURL %>" width="50px" />
+            <%= blog.createdBy.fullName %>
         </div>
 
         <div class="container mt-3">
-            <h1>Comments</h1>
+            <h1>Comments (<%= comments.length %>)</h1>
             <% if (locals.user) { %>
                 <form action="/blog/comment/<%= blog._id %>" method="post">
-                    <div class="mb-3">
-                        <input type="text" class="form-control" name="Content" placeholder="Enter your comment.">
+                    <div class="mt-3">
+                        <input type="text" class="form-control" name="Content" placeholder="Enter your comment." />
+                        <button class="btn btn-sm btn-primary" type="submit">Add</button>
+                    </div>
+                </form>
+                <% } %>
+                    <div class="mt-3">
+                        <% comments.forEach(comment=> { %>
+                            <div>
+                                <img src="<%= comment.createdBy.profilePicURL %>" width="50px" />
+                                <%= comment.createdBy.fullName %>
+                                    <pre><%= comment.content %></pre>
+                            </div>
+                            <% }) %>
                     </div>
         </div>
-        <button class="btn btn-sm btn-primary" type="submit">Add</button>
-        <% } %>
 
-
-            <%- include('./partials/script') %>
+        <%- include('./partials/script') %>
 </body>
 
 </html>
