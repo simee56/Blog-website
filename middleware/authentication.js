@@ -16,7 +16,7 @@ function checkForAuthenticationCookie(cookieName) {
         }
         catch (error) {}
         return next();
-    }
+    }     
 }
 
 module.exports = {
