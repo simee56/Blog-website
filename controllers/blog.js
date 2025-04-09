@@ -8,9 +8,9 @@ async function handleBlogRoute(req, res) {
 }
 
 async function handleBlogById(req, res) {
-    const blog = await Blog.findById(req.params.id).populate("createdBy");
+    const blog = await Blog.findById(req.params.id).populate("createdBy", "fullName profilePicURL");
 
-    const comments =await Comment.find({blogId: req.params.id}).populate("createdBy");
+    const comments =await Comment.find({blogId: req.params.id}).populate("createdBy", "fullName profilePicURL");
     console.log("comments", comments);
 
     return res.render("blog", {
