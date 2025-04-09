@@ -29,9 +29,11 @@ app.use(express.static(path.resolve("./public")));
 //ROUTES
 const userRoute = require('./routes/user');
 const blogRoute = require('./routes/blog');
+const commentRoute = require('./routes/comments');
 
 app.use('/user', userRoute);
 app.use('/blog', blogRoute);
+app.use('/comment',commentRoute);
 
 
 //RENDERING  HOME PAGE
